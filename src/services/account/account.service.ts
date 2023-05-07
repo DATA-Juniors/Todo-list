@@ -18,10 +18,24 @@ export default class AccountService {
             }
         })
     }
-    async delete(id: number) {
+    async findUserByUsername(username: string) {
+        return await prisma.account.findFirst({
+            where: {
+                username
+            }
+        })
+    }
+    async findUserByToken(token: string) {
+        return await prisma.account.findUnique({
+            where: {
+                token
+            }
+        })
+    }
+    async deleteAccount(token: string) {
         return await prisma.account.delete({
             where: {
-                id
+                token
             }
         })
     }

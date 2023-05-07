@@ -15,5 +15,5 @@ model account {
   name String
   username String
   password String
-  token String
+  token String @unique
 }
